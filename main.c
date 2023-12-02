@@ -4,6 +4,7 @@
 #include <time.h>
 
 #include "day1/day1.h"
+#include "day2/day2.h"
 
 const static struct {
 	const int day;
@@ -12,7 +13,9 @@ const static struct {
 	int (*func)();
 } function_map[] = {
 	{1, 1, day1part1},
-	{1, 2, day1part2}
+	{1, 2, day1part2},
+	{2, 1, day2part1},
+	{2, 2, day2part2}
 };
 
 int main(int argc, char** argv) {
