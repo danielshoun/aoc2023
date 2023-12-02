@@ -55,7 +55,7 @@ int day1part2() {
 	int c;
 	int line_first_digit = -1;
 	int line_last_digit = -1;
-	char* current_str = "";
+	char* current_str = malloc(0);
 	int sum = 0;
 	FILE* file;
 	fopen_s(&file, "./day1/input.txt", "r");
@@ -74,8 +74,10 @@ int day1part2() {
 				strcpy_s(new_str, len + 1, current_str);
 				new_str[len] = c;
 				new_str[len + 1] = '\0';
+				free(current_str);
 				current_str = malloc(strlen(new_str) + 1);
 				strcpy_s(current_str, strlen(new_str) + 1, new_str);
+				free(new_str);
 				len = strlen(current_str);
 
 				for (int i = 0; i < sizeof(num_string_map) / sizeof(num_string_map[0]); i++) {
@@ -105,6 +107,7 @@ int day1part2() {
 			}
 		}
 	}
+	free(current_str);
 	printf("%i", sum);
 	return 0;
 }
