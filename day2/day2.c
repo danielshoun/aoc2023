@@ -14,8 +14,8 @@ int day2part1() {
 	int c;
 	int game_id = 1;
 	int past_game_id = 0;
-	char* curr_num_str = "";
-	char* curr_color = "";
+	char* curr_num_str = malloc(0);
+	char* curr_color = malloc(0);
 	int curr_game_is_possible = 1;
 	int sum = 0;
 
@@ -31,20 +31,24 @@ int day2part1() {
 					curr_color[0] = 0;
 				} else if (isdigit(c)) {
 					size_t curr_num_str_len = strlen(curr_num_str);
-					char* new_num_str = malloc(curr_num_str_len + 1);
+					char* new_num_str = malloc(curr_num_str_len + 1 + 1);
 					strcpy_s(new_num_str, curr_num_str_len + 1, curr_num_str);
 					new_num_str[curr_num_str_len] = c;
 					new_num_str[curr_num_str_len + 1] = '\0';
+					free(curr_num_str);
 					curr_num_str = malloc(strlen(new_num_str) + 1);
 					strcpy_s(curr_num_str, strlen(new_num_str) + 1, new_num_str);
+					free(new_num_str);
 				} else if (isalpha(c)) {
 					size_t curr_color_len = strlen(curr_color);
-					char* new_color = malloc(curr_color_len + 1);
+					char* new_color = malloc(curr_color_len + 1 + 1);
 					strcpy_s(new_color, curr_color_len + 1, curr_color);
 					new_color[curr_color_len] = c;
 					new_color[curr_color_len + 1] = '\0';
+					free(curr_color);
 					curr_color = malloc(strlen(new_color) + 1);
 					strcpy_s(curr_color, strlen(new_color) + 1, new_color);
+					free(new_color);
 
 					if (strcmp(curr_color, "red") == 0) {
 						if (strtol(curr_num_str, NULL, 10) > MAX_RED) {
@@ -72,6 +76,8 @@ int day2part1() {
 			}
 		}
 	}
+	free(curr_num_str);
+	free(curr_color);
 	printf("%i", sum);
 	return 0;
 }
@@ -80,8 +86,8 @@ int day2part2() {
 	int c;
 	int game_id = 1;
 	int past_game_id = 0;
-	char* curr_num_str = "";
-	char* curr_color = "";
+	char* curr_num_str = malloc(0);
+	char* curr_color = malloc(0);
 	int curr_max_red = 0;
 	int curr_max_green = 0;
 	int curr_max_blue = 0;
@@ -99,20 +105,24 @@ int day2part2() {
 					curr_color[0] = 0;
 				} else if (isdigit(c)) {
 					size_t curr_num_str_len = strlen(curr_num_str);
-					char* new_num_str = malloc(curr_num_str_len + 1);
+					char* new_num_str = malloc(curr_num_str_len + 1 + 1);
 					strcpy_s(new_num_str, curr_num_str_len + 1, curr_num_str);
 					new_num_str[curr_num_str_len] = c;
 					new_num_str[curr_num_str_len + 1] = '\0';
+					free(curr_num_str);
 					curr_num_str = malloc(strlen(new_num_str) + 1);
 					strcpy_s(curr_num_str, strlen(new_num_str) + 1, new_num_str);
+					free(new_num_str);
 				} else if (isalpha(c)) {
 					size_t curr_color_len = strlen(curr_color);
-					char* new_color = malloc(curr_color_len + 1);
+					char* new_color = malloc(curr_color_len + 1 + 1);
 					strcpy_s(new_color, curr_color_len + 1, curr_color);
 					new_color[curr_color_len] = c;
 					new_color[curr_color_len + 1] = '\0';
+					free(curr_color);
 					curr_color = malloc(strlen(new_color) + 1);
 					strcpy_s(curr_color, strlen(new_color) + 1, new_color);
+					free(new_color);
 
 					if (strcmp(curr_color, "red") == 0) {
 						if (strtol(curr_num_str, NULL, 10) > curr_max_red) {
@@ -141,6 +151,8 @@ int day2part2() {
 			}
 		}
 	}
+	free(curr_num_str);
+	free(curr_color);
 	printf("%i", sum);
 	return 0;
 }
