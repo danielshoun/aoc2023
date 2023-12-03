@@ -1,6 +1,7 @@
 #ifndef COMPAT_H
 #define COMPAT_H
 #include <stdio.h>
+#include <errno.h>
 
 #ifdef __APPLE_CC__
 errno_t fopen_s(FILE**, char*, char*);
