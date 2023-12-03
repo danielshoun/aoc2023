@@ -1,10 +1,8 @@
-//
-// Created by micro on 12/1/2023.
-//
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../compat/compat.h"
 
 const int MAX_RED = 12;
 const int MAX_GREEN = 13;

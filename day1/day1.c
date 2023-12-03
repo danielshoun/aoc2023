@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../compat/compat.h"
 
 int day1part1() {
 	int c;

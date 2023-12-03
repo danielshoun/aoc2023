@@ -11,4 +11,6 @@ add_executable(aoc2023 main.c
         day1/day1.h
         day2/day2.h
         day2/day2.c
+        compat/compat.c
+        compat/compat.h
 )

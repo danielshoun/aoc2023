@@ -1,7 +1,3 @@
-//
-// Created by micro on 11/27/2023.
-//
-
 #ifndef DAY2_H
 #define DAY2_H
 
