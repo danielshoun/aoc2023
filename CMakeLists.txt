@@ -8,6 +8,7 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/day2/input.txt DESTINATION ${CMAKE_CURRENT
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/day3/input.txt DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/day3)
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/day4/input.txt DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/day4)
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/day5/input.txt DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/day5)
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/day6/input.txt DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/day6)
 
 add_executable(aoc2023 main.c
         day1/day1.c
@@ -22,4 +23,6 @@ add_executable(aoc2023 main.c
         day4/day4.h
         day5/day5.c
         day5/day5.h
+        day6/day6.c
+        day6/day6.h
 )
