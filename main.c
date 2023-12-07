@@ -9,6 +9,7 @@
 #include "day4/day4.h"
 #include "day5/day5.h"
 #include "day6/day6.h"
+#include "day7/day7.h"
 
 const static struct {
 	const int day;
@@ -27,7 +28,9 @@ const static struct {
 	{5, 1, day5part1},
 	{5, 2, day5part2},
 	{6, 1, day6part1},
-	{6, 2, day6part2}
+	{6, 2, day6part2},
+	{7, 1, day7part1},
+	{7, 2, day7part2}
 };
 
 int main(int argc, char** argv) {

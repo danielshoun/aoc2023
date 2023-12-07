@@ -89,7 +89,7 @@ int day5part1() {
 	}
 
 	int64_t lowest_location = -1;
-	for(int i = 0; i < seeds_size; i++) {
+	for (int i = 0; i < seeds_size; i++) {
 		int64_t curr_mapping = seeds[i];
 		int found_in_depth = 0;
 		int curr_depth = 1;
@@ -102,7 +102,8 @@ int day5part1() {
 			if (found_in_depth == 0) {
 				int64_t src_end = range_map.src_start + range_map.range - 1;
 				if (curr_mapping >= range_map.src_start && curr_mapping <= src_end) {
-					printf("Mapping: %lld, Depth: %i, DStart: %lld, SStart: %lld, Range: %lld\n", curr_mapping, range_map.depth, range_map.dest_start, range_map.src_start, range_map.range);
+					printf("Mapping: %lld, Depth: %i, DStart: %lld, SStart: %lld, Range: %lld\n", curr_mapping,
+					       range_map.depth, range_map.dest_start, range_map.src_start, range_map.range);
 					curr_mapping = range_map.dest_start + (curr_mapping - range_map.src_start);
 					found_in_depth = 1;
 				}
@@ -224,7 +225,7 @@ int day5part2() {
 	}
 
 	int64_t lowest_location = -1;
-	for(int i = 0; i < seeds_size; i++) {
+	for (int i = 0; i < seeds_size; i++) {
 		struct SeedRange seed_range = seeds[i];
 		int64_t seed_range_start = seed_range.start;
 		int64_t seed_range_end = seed_range.start + seed_range.range - 1;

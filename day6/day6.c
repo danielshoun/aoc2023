@@ -16,7 +16,7 @@ int day6part1() {
 	FILE* file;
 	fopen_s(&file, "./day6/input.txt", "r");
 	if (file) {
-		while((c = getc(file)) != EOF) {
+		while ((c = getc(file)) != EOF) {
 			if (c == ' ' || c == '\n') {
 				if (strlen(curr_num_str) > 0) {
 					int curr_num = strtol(curr_num_str, NULL, 10);
@@ -82,7 +82,7 @@ int day6part2() {
 	FILE* file;
 	fopen_s(&file, "./day6/input.txt", "r");
 	if (file) {
-		while((c = getc(file)) != EOF) {
+		while ((c = getc(file)) != EOF) {
 			if (c == '\n') {
 				if (strlen(curr_num_str) > 0) {
 					int64_t curr_num = strtol(curr_num_str, NULL, 10);
