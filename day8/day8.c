@@ -71,7 +71,7 @@ int day8part1() {
 		}
 
 		char* curr_node = malloc(4);
-		strcpy_s(curr_node, 3, "AAA");
+		strcpy_s(curr_node, 4, "AAA");
 		curr_node[3] = '\0';
 		int sum = 0;
 		int instruction_index = 0;

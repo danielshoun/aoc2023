@@ -1,3 +1,5 @@
+#ifdef __APPLE_CC__
+
 #include <assert.h>
 #include <stdio.h>
 #include <string.h>
@@ -16,3 +18,5 @@ errno_t fopen_s(FILE** f, const char* name, const char* mode) {
 void strcpy_s(char* dest, size_t _, char* src) {
     strcpy(dest, src);
 }
+
+#endif
