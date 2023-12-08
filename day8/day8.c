@@ -107,6 +107,17 @@ int all_end_in_z(struct MovePath* nodes, int nodes_size) {
 	return 1;
 }
 
+
+int gcd(int64_t num1, int64_t num2) {
+	if (num2 == 0) {
+		return num1;
+	}
+	if (num1 % num2 == 0) {
+		return num2;
+	}
+	return gcd(num2, num1 % num2);
+}
+
 int day8part2() {
 	int c;
 
@@ -169,6 +180,7 @@ int day8part2() {
 
 		int num_starting_nodes = 0;
 		struct MovePath* curr_nodes = malloc(0);
+		int* path_lengths = malloc(0);
 		for (int x = 0; x < move_paths_size; x++) {
 			struct MovePath move_path = move_paths[x];
 			if (move_path.src[2] == 'A') {
@@ -176,6 +188,10 @@ int day8part2() {
 				struct MovePath* new_curr_nodes = realloc(curr_nodes, num_starting_nodes * sizeof(struct MovePath));
 				new_curr_nodes[num_starting_nodes - 1] = move_path;
 				curr_nodes = new_curr_nodes;
+
+				int* new_path_lengths = realloc(path_lengths, num_starting_nodes * sizeof(int));
+				new_path_lengths[num_starting_nodes - 1] = 0;
+				path_lengths = new_path_lengths;
 			}
 		}
 
@@ -189,12 +205,15 @@ int day8part2() {
 			int instruction = instructions[instruction_index];
 			for (int i = 0; i < num_starting_nodes; i++) {
 				struct MovePath node = curr_nodes[i];
-				char* dest_node = node.dests[instruction];
-				for (int j = 0; j < move_paths_size; j++) {
-					struct MovePath move_path = move_paths[j];
-					if (strcmp(move_path.src, dest_node) == 0) {
-						curr_nodes[i] = move_path;
+				if (node.src[2] != 'Z') {
+					char* dest_node = node.dests[instruction];
+					for (int j = 0; j < move_paths_size; j++) {
+						struct MovePath move_path = move_paths[j];
+						if (strcmp(move_path.src, dest_node) == 0) {
+							curr_nodes[i] = move_path;
+						}
 					}
+					path_lengths[i] += 1;
 				}
 			}
 
@@ -202,7 +221,14 @@ int day8part2() {
 			instruction_index += 1;
 		}
 
-		printf("%i", sum);
+		int64_t curr_gcd = path_lengths[0];
+		int64_t curr_lcm = path_lengths[0];
+		for (int i = 1; i < num_starting_nodes; i++) {
+			curr_gcd = gcd(curr_gcd, (int64_t)path_lengths[i]);
+			curr_lcm = (curr_lcm * (int64_t)path_lengths[i]) / gcd(curr_lcm, (int64_t)path_lengths[i]);
+		}
+		printf("%lld\n", curr_lcm);
+
 	}
 	return 0;
 }
